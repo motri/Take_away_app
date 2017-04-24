@@ -46,18 +46,20 @@ class User
         $add.choice
       when 'current order'
         $order.start unless $order.running?
-        puts "Nothing added yet." if $current_order.empty?
+        p#uts "Nothing added yet." if $current_order.empty?
         $current.show
       when 'total'
         $cash.calculate_total
         puts "£#{$total}0"
       when 'place'
-        puts "Nothing added yet." if $current_order.empty?
+        #puts "Nothing added yet." if $current_order.empty?
         puts "Are you sure?"
         print "Y/N: "
         answer = gets.chomp
         if answer == 'y'
+          $cash.calculate_total
           $sms.send
+          exit
         else
           interactive_menu
         end

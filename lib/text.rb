@@ -5,9 +5,11 @@ require_relative 'total'
 class Text
   attr_reader :total
 
+
+
   def send
 
-    t = Time.new + 7200
+    t = Time.new + 3600
     @dt = t.strftime('%R')
 
     account_sid = 'AC665d861428c00e93175249a7481dd242'
@@ -20,6 +22,5 @@ class Text
       from: "+441659432021",
       body: "Your food will be delivered by #{@dt}. Your bill is £#{$total}0"
     )
-    exit
   end
 end
